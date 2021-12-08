@@ -6,9 +6,9 @@ This application is an online storefront that allows users to browse product off
 
 ### Phase 1 Application Setup
 
-* Setup basic React application
-* Implement Redux to create a state management system
-* At this phase state for users, store items, etc should be managed in memory instead of the persistance layer of an API.
+* Users will be able to see a list of available product categories in the store so that they can easily browse products
+* Users will be able to choose a category and see a list of all available products matching that category
+* Users will be presented with an easy to use user interface so that they can shop the online store with confidence
 
 ------------
 
