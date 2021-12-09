@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addToCart } from '../../store/cart';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
-const ProductDetailsCard = ({ product }) => {
+const ProductDetailsCard = ({ product, addToCart }) => {
   return (
     <Card sx={{ maxWidth: 345 }} data-testid={`product-${product.productName}`}>
       <CardMedia
@@ -19,11 +21,16 @@ const ProductDetailsCard = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Add to Cart</Button>
+        <Button size="small" onClick={() => addToCart(product)}>Add to Cart</Button>
         <Button size="small">View Details</Button>
       </CardActions>
     </Card>
   );
 }
 
-export default ProductDetailsCard;
+const mapDispatchToProps = dispatch => ({
+  addToCart: (product) => dispatch(addToCart(product)),
+});
+
+
+export default connect(null, mapDispatchToProps)(ProductDetailsCard);
