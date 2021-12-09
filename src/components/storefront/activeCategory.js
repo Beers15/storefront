@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Typography }  from '@mui/material';
 
 const ActiveCategory = (props) => {
   if(props.currentCategory) {
     return (
-      <>
-        <h1>{props.currentCategory}</h1>
-      </>
+      <Typography mt={2} variant="h3">{props.currentCategory.toUpperCase()}</Typography>
     );
   } else {
     return null;
