@@ -3,32 +3,17 @@ import { connect } from 'react-redux';
 import ProductDetailsCard from './productDetailsCard';
 
 const Products = (props) => {
-  const displayProducts = () => {
-    let products = props.products;
-
-    if(props.currentCategory) {
-      products = products.filter(product => { 
-        return product.category === props.currentCategory;
-      });
-    } 
-
-    products = products.map((product, idx) => { 
-      return <ProductDetailsCard key={idx} product={product} />; 
-    });
-    
-    return products;
-  }
-
   return (
     <div>
-      {displayProducts()}
+      {props.products.map((product, idx) => { 
+        return <ProductDetailsCard key={idx} product={product} />; 
+      })}
     </div>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    currentCategory: state.categories.currentCategory,
     products: state.products.products,
   };
 };
