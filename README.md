@@ -14,7 +14,7 @@ This application is an online storefront that allows users to browse product off
 
 ### Deployment
 
-  _Live application code found [here](https://virtual-storefront.netlify.app/)_
+  _Live application code found [here](https://virtual-store-front.netlify.app/)_
 
   <!-- _The server used for API Integration can be found [here]()_ -->
   
