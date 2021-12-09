@@ -1,19 +1,21 @@
 let initialState = {
   categories: [
-    'Furniture', 'Appliances', 'Electronics', 'Clothes', 'Other',
+    'All', 'Furniture', 'Appliances', 'Electronics', 'Clothes', 'Other',
   ],
-  selectedCategory: null,
+  currentCategory: null,
 };
 
 function categoriesReducer(state = initialState, action) {
   switch(action.type) {
   case 'SELECT_CATEGORY':
-    if(action.payload in state.categories) {
-      return { categories: state.categories, selectedCategory: action.payload};
-    } else {
-      return { categories: state.categories, selectedCategory: state.selectedCategory };
+    if(action.payload === 'All') {
+      return { categories: state.categories, currentCategory: null };
     }
-    
+    else if(state.categories.includes(action.payload)) {
+      return { categories: state.categories, currentCategory: action.payload};
+    } else {
+      return { categories: state.categories, currentCategory: state.currentCategory };
+    }
   default:
     return state;
   }
