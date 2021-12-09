@@ -9,7 +9,6 @@ const App = () => {
       <Container 
         className="main" 
         maxWidth='xxl' 
-        fluid 
         sx={{ display: 'flex', justifyContent: 'flexStart', flexDirection: 'column', minHeight: '90vh'}}
       >
         <Header />

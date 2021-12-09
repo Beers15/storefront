@@ -12,7 +12,7 @@ function categoriesReducer(state = initialState, action) {
       return { categories: state.categories, currentCategory: null };
     }
     else if(state.categories.includes(action.payload)) {
-      return { categories: state.categories, currentCategory: action.payload};
+      return { categories: state.categories, currentCategory: action.payload };
     } else {
       return { categories: state.categories, currentCategory: state.currentCategory };
     }

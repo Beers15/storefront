@@ -4,7 +4,7 @@ import { Typography }  from '@mui/material';
 
 const ActiveCategory = (props) => {
   return (
-    <Typography mt={2} variant="h3">{props?.currentCategory?.toUpperCase() || 'CATALOG'}</Typography>
+    <Typography mt={2} variant="h3" data-testid="active-category">{props?.currentCategory?.toUpperCase() || 'CATALOG'}</Typography>
   );
 }
 

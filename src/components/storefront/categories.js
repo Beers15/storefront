@@ -4,11 +4,11 @@ import { Button, Stack, Typography, Box }  from '@mui/material';
 
 const Categories = (props) => {
   return (
-    <Box mt={6}>
+    <Box mt={6} data-testid="categories">
       <Typography variant='h4'  ml={2}>Browse Our Categories</Typography>
       <Stack direction="row">
         {props.categories.map(category => {
-          return <Button size="small" color="info" key={category} onClick={() => props.selectCategory(category)}>{category}</Button>
+          return <Button size="small" color="info" key={category} onClick={() => props.selectCategory(category)} data-testid={`category-btn-${category}`}>{category}</Button>
         })}
       </Stack>
     </Box>
