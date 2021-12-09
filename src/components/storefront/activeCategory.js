@@ -3,13 +3,9 @@ import { connect } from 'react-redux';
 import { Typography }  from '@mui/material';
 
 const ActiveCategory = (props) => {
-  if(props.currentCategory) {
-    return (
-      <Typography mt={2} variant="h3">{props.currentCategory.toUpperCase()}</Typography>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <Typography mt={2} variant="h3">{props?.currentCategory?.toUpperCase() || 'CATALOG'}</Typography>
+  );
 }
 
 const mapStateToProps = state => {

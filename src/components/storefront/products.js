@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProductDetailsCard from './productDetailsCard';
+import { Box, Typography } from '@mui/material';
 
 const Products = (props) => {
   return (
-    <div>
+    <Box mt={3} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      {props.products.length === 0 && (<Typography variant="h5">Nothing is currently being offered from this category</Typography>)}
       {props.products.map((product, idx) => { 
         return <ProductDetailsCard key={idx} product={product} />; 
       })}
-    </div>
+    </Box>
   );
 }
 
