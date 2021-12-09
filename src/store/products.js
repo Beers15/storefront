@@ -11,7 +11,6 @@ function productsReducer(state = initialState, action) {
   switch(action.type) {
   case 'SELECT_CATEGORY':
     if(action.payload !== 'All') {
-      console.log(action.payload)
       let filteredProducts = initialState.products.filter(product => product.category === action.payload);
       return { products: filteredProducts };
     } 

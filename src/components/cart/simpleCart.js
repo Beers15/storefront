@@ -1,11 +1,38 @@
-import React from 'react'
-import { Paper, Typography } from '@mui/material'
-const Simplecart = () => {
-  return (
-    <Paper elevation={6} sx={{ overflow: 'hidden', height: '200px', width: '200px', zIndex: '100' }}>
-      <Typography pl={2} pr={2}>CART</Typography>
-    </Paper>
-  );
+import React from 'react';
+import { connect } from 'react-redux';
+import { removeFromCart } from '../../store/cart';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { Paper, Typography, Box } from '@mui/material';
+
+const Simplecart = (props) => {
+  if(props.products.length > 0) {
+    return (
+      <Paper variant="outline" className="cart" sx={{ height: `${props.products.length * 43 + 20}px`}}>
+        {props.products.map((product, idx) => {
+          return (
+            <Box key={idx} mt={2} sx={{display: 'flex', justifyContent: 'flex-start'}}>
+              <Typography variant="subtitle1" pl={2} pr={2} sx={{flexGrow: 1 }}>
+                {product.productName.length < 14 ? product.productName : product.productName.substring(0, 14) + '...'}
+              </Typography>
+              <CancelIcon sx={{ color: 'crimson', marginRight: '10px' }} onClick={() => props.removeFromCart(product)} />
+            </Box>
+          );
+        })}
+      </Paper>
+    );
+  } else {
+    return null;
+  }
 }
 
-export default Simplecart
+const mapStateToProps = state => {
+  return {
+    products: state.cart.products
+  };
+}
+
+const mapDispatchToProps = dispatch => ({
+  removeFromCart: (product) => dispatch(removeFromCart(product)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Simplecart);
