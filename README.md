@@ -10,6 +10,12 @@ This application is an online storefront that allows users to browse product off
 * Users will be able to choose a category and see a list of all available products matching that category
 * Users will be presented with an easy to use user interface so that they can shop the online store with confidence
 
+### Phase 2 Shopping Cart
+
+* Users will be able to add products to their shopping cart
+* Users will be able to update the quantities of each product in their cart
+* Users will be able to remove products from their cart
+
 ------------
 
 ### Deployment

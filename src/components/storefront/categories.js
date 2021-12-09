@@ -4,7 +4,7 @@ import { Button, Stack, Typography, Box }  from '@mui/material';
 
 const Categories = (props) => {
   return (
-    <Box mt={6} data-testid="categories">
+    <Box mt={3} data-testid="categories" sx={{flexGrow: 1}}>
       <Typography variant='h4'  ml={2}>Browse Our Categories</Typography>
       <Stack direction="row">
         {props.categories.map(category => {
