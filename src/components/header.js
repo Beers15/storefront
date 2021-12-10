@@ -7,7 +7,7 @@ const Header = ({ cartSize }) => {
     <AppBar elevation={8} data-testid="header">
       <Toolbar>
         <Typography component="div" sx={{ flexGrow: 1 }} variant="h5" component="div" m={2} sx={{ flexGrow: 1 }}>Virtual Storefront</Typography>
-        <Typography mr={9}>CART ({cartSize})</Typography>
+        <Typography mr={2}>CART ({cartSize})</Typography>
       </Toolbar>
     </AppBar>
   );

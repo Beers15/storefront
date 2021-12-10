@@ -6,9 +6,9 @@ import { Box, Typography } from '@mui/material';
 const Products = (props) => {
   return (
     <Box mt={3} sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }} data-testid="product-list">
-      {props.products.length === 0 && (<Typography variant="h5">Nothing is currently being offered from this category</Typography>)}
-      {props.products.map((product, idx) => { 
-        return <ProductDetailsCard key={idx} product={product} />; 
+      {props.products?.length === 0 && (<Typography variant="h5">Nothing is currently being offered from this category</Typography>)}
+      {props.products?.map((product, idx) => { 
+        return product.count > 0 ? <ProductDetailsCard key={idx} product={product} /> : null;
       })}
     </Box>
   );
@@ -16,7 +16,10 @@ const Products = (props) => {
 
 const mapStateToProps = state => {
   return {
-    products: state.products.products,
+    products: state.products.filteredProducts,
+    counts: state.products.filteredProducts.map(product => {
+      return product.count
+    })
   };
 };
 

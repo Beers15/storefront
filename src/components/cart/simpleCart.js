@@ -11,6 +11,9 @@ const Simplecart = (props) => {
         {props.products.map((product, idx) => {
           return (
             <Box key={idx} mt={2} sx={{display: 'flex', justifyContent: 'flex-start'}}>
+              <Typography variant="subtitle1" pl={2} pr={2}>
+                [{props.amounts[idx]}]
+              </Typography>
               <Typography variant="subtitle1" pl={2} pr={2} sx={{flexGrow: 1 }}>
                 {product.productName.length < 14 ? product.productName : product.productName.substring(0, 14) + '...'}
               </Typography>
@@ -27,7 +30,10 @@ const Simplecart = (props) => {
 
 const mapStateToProps = state => {
   return {
-    products: state.cart.products
+    products: state.cart.products,
+    amounts: state.cart.products.map(product => {
+      return product.amount
+    })
   };
 }
 
