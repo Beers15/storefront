@@ -19,17 +19,23 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
         <Typography variant="subtext1" color="text.secondary" data-testid={`product-description-${product.productName}`}>
           {product.description}
         </Typography>
-        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-description-${product.productCost}`}>
+        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.productName}`}>
           Cost: {product.cost}
         </Typography>
-        <Typography variant="h6" color="text.secondary" data-testid={`product-description-${product.productCount}`}>
+        <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.productName}`}>
           Amount in Stock: {products.find(productFromStore => {
             return product === productFromStore
           }).count} 
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => addToCart(product)}>Add to Cart</Button>
+        <Button 
+          size="small" 
+          onClick={() => addToCart(product)} 
+          data-testid={`addToCart-btn-${product.productName}`}
+        >
+          Add to Cart
+        </Button>
         <Button size="small">View Details</Button>
       </CardActions>
     </Card>

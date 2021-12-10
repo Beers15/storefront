@@ -35,7 +35,6 @@ describe('Testing core behaviors of app', () => {
   it('Should display related items when a category is selected and not items that do not belong in that category' ,() => {
     let appliancesBtn = screen.getByTestId('category-btn-Appliances');
 
-
     let blenderDescription = screen.getByTestId('product-description-Blender');
     let blenderName = screen.getByTestId('product-name-Blender');
     let sofaDescription = screen.getByTestId('product-description-Sofa');
@@ -71,5 +70,52 @@ describe('Testing core behaviors of app', () => {
     expect(blenderNameAfterCategoryChange).toBeInTheDocument();
     expect(sofaDescriptionAfterCategoryChange).toEqual('TestingLibraryElementError');
     expect(sofaNameAfterCategoryChange).toEqual('TestingLibraryElementError');
+  });
+
+  it('Should properly update the cart when an item is added to it', () => {
+    let sofaBtn = screen.getByTestId('addToCart-btn-Sofa');
+    fireEvent.click(sofaBtn);
+
+    let cartSofaName = screen.getByTestId('cart-product-Sofa');
+    let cartSofaCount = screen.getByTestId('cart-amount-Sofa');
+
+    expect(cartSofaName).toBeInTheDocument();
+    expect(cartSofaCount).toBeInTheDocument();
+  });
+
+  it('Should properly reduce the count when the x button is hit for an item in the cart', () => {
+    let sofaBtn = screen.getByTestId('addToCart-btn-Sofa');
+    fireEvent.click(sofaBtn);
+    fireEvent.click(sofaBtn);
+    fireEvent.click(sofaBtn);
+
+    let sofaRemoveBtn = screen.getByTestId('cart-product-removeBtn-Sofa');
+    fireEvent.click(sofaRemoveBtn);
+
+    let cartSofaName = screen.getByTestId('cart-product-Sofa');
+    let cartSofaCount = screen.getByTestId('cart-amount-Sofa');
+
+    expect(cartSofaName).toBeInTheDocument();
+    expect(cartSofaCount).toHaveTextContent('2');
+  });
+
+  it('Should update catalog product card when the count is altered  (product is +/- to the cart)', () => {
+    let sofaCount = screen.getByTestId(`product-count-Sofa`);
+    
+    //original value is 10, after previous test it starts at 7
+    let sofaBtn = screen.getByTestId('addToCart-btn-Sofa');
+    fireEvent.click(sofaBtn);
+    fireEvent.click(sofaBtn);
+    fireEvent.click(sofaBtn);
+
+    //7 - 3 should be 4
+    expect(sofaCount).toHaveTextContent('4');
+
+    let sofaRemoveBtn = screen.getByTestId('cart-product-removeBtn-Sofa');
+    fireEvent.click(sofaRemoveBtn);
+
+
+    //removing from cart place 1 back in stock (7 - 3 + 1)
+    expect(sofaCount).toHaveTextContent('5');
   });
 });
