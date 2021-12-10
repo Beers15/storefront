@@ -1,12 +1,22 @@
 import React from 'react';
-import { Typography, AppBar } from '@mui/material'
+import { connect } from 'react-redux';
+import { Typography, AppBar, Toolbar } from '@mui/material'
 
-const Header = () => {
+const Header = ({ cartSize }) => {
   return (
     <AppBar elevation={8} data-testid="header">
-      <Typography variant="h5" component="div" m={2} sx={{ flexGrow: 1 }}>Virtual Storefront</Typography>
+      <Toolbar>
+        <Typography component="div" sx={{ flexGrow: 1 }} variant="h5" component="div" m={2} sx={{ flexGrow: 1 }}>Virtual Storefront</Typography>
+        <Typography mr={2}>CART ({cartSize})</Typography>
+      </Toolbar>
     </AppBar>
   );
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    cartSize: state.cart.products.length
+  }
+}
+
+export default connect(mapStateToProps)(Header);

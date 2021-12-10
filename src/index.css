@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cart {
+  width: 250px;
+  z-index: '100';
+  /*https://codepen.io/jshawl/pen/JcpKg */
+  background:
+    linear-gradient(-135deg, #dddddc 10px, transparent 0) 0 10px,
+    linear-gradient(135deg, #dddddc 10px, #fff 0) 0 10px;
+  background-color: #dddddc !important;
+  background-position: left bottom !important;
+  background-repeat: repeat-x !important;
+  background-size: 20px 20px;
+}

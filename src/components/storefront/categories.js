@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { selectCategory } from '../../store/categories';
 import { Button, Stack, Typography, Box }  from '@mui/material';
 
 const Categories = (props) => {
   return (
-    <Box mt={6} data-testid="categories">
+    <Box mt={3} data-testid="categories" sx={{flexGrow: 1}}>
       <Typography variant='h4'  ml={2}>Browse Our Categories</Typography>
       <Stack direction="row">
         {props.categories.map(category => {
@@ -22,7 +23,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  selectCategory: (category) => dispatch({type: 'SELECT_CATEGORY', payload: category}),
+  selectCategory: (category) => dispatch(selectCategory(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
