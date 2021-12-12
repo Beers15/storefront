@@ -16,6 +16,12 @@ This application is an online storefront that allows users to browse product off
 * Users will be able to update the quantities of each product in their cart
 * Users will be able to remove products from their cart
 
+### Phase 3 Live Data
+
+* A user will be able to interact with a live inventory so that they can have confidence that the displayed products are in stock
+
+* A user will be able to know that when they add items to their cart, an item is removed from the overall stock so that no other users can purchase it
+
 ------------
 
 ### Deployment

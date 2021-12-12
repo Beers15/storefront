@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../../store/cart';
+import { addToCart } from '../../store/actions/cart';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 const ProductDetailsCard = ({ products, product, addToCart }) => {

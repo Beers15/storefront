@@ -1,8 +1,10 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import  thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-import cartReducer from './cart';
-import productsReducer from './products';
-import catagoriesReducer from './categories';
+import cartReducer from './reducers/cart';
+import productsReducer from './reducers/products';
+import catagoriesReducer from './reducers/categories';
 
 let reducers = combineReducers({ 
   cart: cartReducer,
@@ -11,7 +13,7 @@ let reducers = combineReducers({
 });
 
 const store = () => {
-  return createStore(reducers);
+  return createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 };
 
 export default store;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../../store/cart';
+import { removeFromCart } from '../../store/actions/cart';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Paper, Typography, Box } from '@mui/material';
 

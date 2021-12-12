@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectCategory } from '../../store/categories';
+import { selectCategory } from '../../store/actions/categories';
 import { Button, Stack, Typography, Box }  from '@mui/material';
 
 const Categories = (props) => {
