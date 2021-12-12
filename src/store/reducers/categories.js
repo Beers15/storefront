@@ -1,21 +1,26 @@
+let initCategory = { displayName: 'All', normalizedName: 'all', description: '' };
+
 let initialState = {
-  categories: [
-    'All', 'Furniture', 'Appliances', 'Electronics', 'Clothes', 'Other',
-  ],
-  currentCategory: null,
+  categories: [ initCategory ],
+  currentCategory: initCategory,
 };
 
 function categoriesReducer(state = initialState, action) {
   switch(action.type) {
   case 'SELECT_CATEGORY':
-    if(action.payload === 'All') {
-      return { categories: state.categories, currentCategory: null };
-    }
+    if(action.payload.displayName === 'All') {
+      return { categories: state.categories, currentCategory: initCategory };
+    } 
     else if(state.categories.includes(action.payload)) {
       return { categories: state.categories, currentCategory: action.payload };
     } else {
       return { categories: state.categories, currentCategory: state.currentCategory };
     }
+    
+  case 'GET_CATEGORIES':
+    console.log('HITTTT')
+    console.log(action.payload)
+    return {...state, categories: state.categories.concat(action.payload), }  
   default:
     return state;
   }

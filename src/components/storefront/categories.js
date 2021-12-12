@@ -8,8 +8,8 @@ const Categories = (props) => {
     <Box mt={3} data-testid="categories" sx={{flexGrow: 1}}>
       <Typography variant='h4'  ml={2}>Browse Our Categories</Typography>
       <Stack direction="row">
-        {props.categories.map(category => {
-          return <Button size="small" color="info" key={category} onClick={() => props.selectCategory(category)} data-testid={`category-btn-${category}`}>{category}</Button>
+        {props.categories.map((category, idx) => {
+          return <Button size="small" color="info" key={idx} onClick={() => props.selectCategory(category)} data-testid={`category-btn-${category.displayName}`}>{category.displayName}</Button>
         })}
       </Stack>
     </Box>

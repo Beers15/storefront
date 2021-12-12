@@ -1,16 +1,15 @@
 import { useEffect } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import StoreFront from './components/storefront';
 import Header from './components/header';
 import Footer from './components/footer';
 import Container from '@mui/material/Container';
+import { getCategories } from './store/actions/categories';
 
-const App = () => {
-  useEffect(async () => {
-    let foo = await axios.get(`${process.env.REACT_APP_API_SERVER}/products`);
-    console.log(foo);
- 
-  
+const App = (props) => {
+  useEffect(() => {
+    console.log('START')
+    props.fetchCategories();
   }, []);
 
   return (
@@ -28,4 +27,8 @@ const App = () => {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  fetchCategories: () => dispatch(getCategories()),
+})
+
+export default connect(null, mapDispatchToProps)(App);
