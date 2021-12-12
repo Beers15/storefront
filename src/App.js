@@ -5,11 +5,12 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Container from '@mui/material/Container';
 import { getCategories } from './store/actions/categories';
+import { getProducts } from './store/actions/products';
 
 const App = (props) => {
   useEffect(() => {
-    console.log('START')
     props.fetchCategories();
+    props.fetchProducts();
   }, []);
 
   return (
@@ -29,6 +30,7 @@ const App = (props) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchCategories: () => dispatch(getCategories()),
+  fetchProducts: () => dispatch(getProducts()),
 })
 
 export default connect(null, mapDispatchToProps)(App);

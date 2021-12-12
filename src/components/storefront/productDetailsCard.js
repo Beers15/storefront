@@ -13,19 +13,19 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
         alt={product.productName}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" data-testid={`product-name-${product.productName}`}>
-          {product.productName}
+        <Typography gutterBottom variant="h5" component="div" data-testid={`product-name-${product.name}`}>
+          {product.name}
         </Typography>
-        <Typography variant="subtext1" color="text.secondary" data-testid={`product-description-${product.productName}`}>
+        <Typography variant="subtext1" color="text.secondary" data-testid={`product-description-${product.name}`}>
           {product.description}
         </Typography>
-        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.productName}`}>
-          Cost: {product.cost}
+        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.name}`}>
+          Cost: {product.price}
         </Typography>
-        <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.productName}`}>
+        <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.name}`}>
           Amount in Stock: {products.find(productFromStore => {
             return product === productFromStore
-          }).count} 
+          }).inventoryCount} 
         </Typography>
       </CardContent>
       <CardActions>

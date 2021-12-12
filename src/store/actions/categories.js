@@ -8,15 +8,16 @@ export const selectCategory = category => async (dispatch) => {
 };
 
 export const getCategories = () => async (dispatch) => {
+  
   let res = null;
   try {
     res = await axios.get(`${process.env.REACT_APP_API_SERVER}/categories`);
   } catch(err) {
     console.log(err);
   }
-
+  console.log(res.data.results, 'CATR##')
   dispatch({
     type: 'GET_CATEGORIES',
-    payload: res.data.results
+    payload: res?.data?.results
   });
 }

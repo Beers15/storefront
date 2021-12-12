@@ -18,8 +18,6 @@ function categoriesReducer(state = initialState, action) {
     }
     
   case 'GET_CATEGORIES':
-    console.log('HITTTT')
-    console.log(action.payload)
     return {...state, categories: state.categories.concat(action.payload), }  
   default:
     return state;
