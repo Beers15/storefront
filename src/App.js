@@ -6,17 +6,17 @@ import Footer from './components/footer';
 import Container from '@mui/material/Container';
 import { getCategories } from './store/actions/categories';
 import { getProducts } from './store/actions/products';
+import  store from './store';
 
 const App = (props) => {
   useEffect(() => {
     props.fetchCategories();
     props.fetchProducts();
-  
-    return async () => {
-      console.log('BYE BYE')
-    }
- 
   }, []);
+  useEffect(() => {
+    console.log("UPDATE")
+    console.log(props.categories);
+  })
 
   return (
     <div>
@@ -33,9 +33,15 @@ const App = (props) => {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    categories: state.categories.categories,
+  };
+}
+
 const mapDispatchToProps = dispatch => ({
   fetchCategories: () => dispatch(getCategories()),
   fetchProducts: () => dispatch(getProducts()),
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
