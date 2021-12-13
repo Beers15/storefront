@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../../store/cart';
+import { addToCart } from '../../store/actions/cart';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
 const ProductDetailsCard = ({ products, product, addToCart }) => {
@@ -9,23 +9,23 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
       <CardMedia
         component="img"
         height="160"
-        image={product.photoUrl}
+        image={product.imageUrl}
         alt={product.productName}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" data-testid={`product-name-${product.productName}`}>
-          {product.productName}
+        <Typography gutterBottom variant="h5" component="div" data-testid={`product-name-${product.name}`}>
+          {product.name}
         </Typography>
-        <Typography variant="subtext1" color="text.secondary" data-testid={`product-description-${product.productName}`}>
+        <Typography variant="subtext1" color="text.secondary" data-testid={`product-description-${product.name}`}>
           {product.description}
         </Typography>
-        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.productName}`}>
-          Cost: {product.cost}
+        <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.name}`}>
+          Cost: {product.price}
         </Typography>
-        <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.productName}`}>
+        <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.name}`}>
           Amount in Stock: {products.find(productFromStore => {
             return product === productFromStore
-          }).count} 
+          }).inventoryCount} 
         </Typography>
       </CardContent>
       <CardActions>
@@ -46,7 +46,6 @@ const mapStateToProps = state => {
   return {
     products: state.products.products,
   }
-  
 }
 
 const mapDispatchToProps = dispatch => ({

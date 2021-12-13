@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../../store/cart';
+import { removeFromCart } from '../../store/actions/cart';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Paper, Typography, Box } from '@mui/material';
 
@@ -11,16 +11,16 @@ const Simplecart = (props) => {
         {props.products.map((product, idx) => {
           return (
             <Box key={idx} mt={2} sx={{display: 'flex', justifyContent: 'flex-start'}}>
-              <Typography variant="subtitle1" pl={2} pr={2} data-testid={`cart-amount-${product.productName}`}>
+              <Typography variant="subtitle1" pl={2} pr={2} data-testid={`cart-amount-${product.name}`}>
                 [{props.amounts[idx]}]
               </Typography>
               <Typography variant="subtitle1" pl={2} pr={2} sx={{flexGrow: 1 }} data-testid={`cart-product-${product.productName}`}>
-                {product.productName.length < 14 ? product.productName : product.productName.substring(0, 14) + '...'}
+                {product.name.length < 14 ? product.name : product.name.substring(0, 14) + '...'}
               </Typography>
               <CancelIcon 
                 sx={{ color: 'crimson', marginRight: '10px' }} 
                 onClick={() => props.removeFromCart(product)}
-                data-testid={`cart-product-removeBtn-${product.productName}`}
+                data-testid={`cart-product-removeBtn-${product.name}`}
               />
             </Box>
           );
