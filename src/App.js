@@ -11,6 +11,11 @@ const App = (props) => {
   useEffect(() => {
     props.fetchCategories();
     props.fetchProducts();
+  
+    return async () => {
+      console.log('BYE BYE')
+    }
+ 
   }, []);
 
   return (

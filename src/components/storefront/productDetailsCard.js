@@ -9,7 +9,7 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
       <CardMedia
         component="img"
         height="160"
-        image={product.photoUrl}
+        image={product.imageUrl}
         alt={product.productName}
       />
       <CardContent>
@@ -46,7 +46,6 @@ const mapStateToProps = state => {
   return {
     products: state.products.products,
   }
-  
 }
 
 const mapDispatchToProps = dispatch => ({

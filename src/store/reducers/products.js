@@ -17,7 +17,7 @@ function productsReducer(state = initialState, action) {
     return { ...state, 
       products: state.products.map(product => {
         if(product === action.payload) {
-          --product.count;
+          --product.inventoryCount;
         }
         return product;
       })
@@ -26,7 +26,7 @@ function productsReducer(state = initialState, action) {
     return { ...state, 
       products: state.products.map(product => {
         if(product === action.payload) {
-          ++product.count;
+          ++product.inventoryCount;
         }
         return product;
       })
