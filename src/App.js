@@ -32,9 +32,13 @@ const App = (props) => {
           <Header />
           <Switch>
             <Route path="/" element={<StoreFront />}></Route>
-            <Route path="/products/:id" element={<ProductPage />}></Route>
-            <Route path="/cart" element={<Checkout />}></Route>
           </Switch>
+          <div style={{ display: 'flex', justifyContent: 'center'}}>
+            <Switch>
+              <Route path="/products/:id" element={<ProductPage />}></Route>
+              <Route path="/cart" element={<Checkout />}></Route>
+            </Switch>
+          </div>
         </BrowserRouter>
       </Container>
       <Footer />

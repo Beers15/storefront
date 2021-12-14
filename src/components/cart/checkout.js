@@ -10,16 +10,20 @@ const Checkout = (props) => {
   const [value, setValue] = useState(null);
 
   return (
-    <div style={{ marginTop: '100px', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ marginTop: '100px' }}>
       <Paper sx={{ padding: '20px 50px'}}>
         <Typography variant="h5">Order Summary</Typography>
         {props.products && (
           props.products.map(product => {
-            return (<div key={product.id}>
-              <Typography sx={{ fontWeight: 700 }} mt={2}>{product.name} (x{product.amount})</Typography>
-              <Typography variant="subtitle1" >${(product.price * product.amount).toFixed(2)}</Typography>
-              <Typography variant="caption" sx={{ color: 'lightslategrey', fontWeight: 700 }} >{product.description || 'Oh dear... No description for this product is available.'}</Typography>
-            </div>);
+            return (
+              <div key={product.id}>
+                <Typography sx={{ fontWeight: 700 }} mt={2}>{product.name} (x{product.amount})</Typography>
+                <Typography variant="subtitle1" >${(product.price * product.amount).toFixed(2)}</Typography>
+                <Typography variant="caption" sx={{ color: 'lightslategrey', fontWeight: 700 }} >
+                  {product.description || 'Oh dear... No description for this product is available.'}
+                </Typography>
+              </div>
+            );
           })
         )}
         {props.products && (
