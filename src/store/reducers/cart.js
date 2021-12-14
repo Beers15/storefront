@@ -44,7 +44,6 @@ function cartReducer(state = initialState, action) {
     return {...state, products: updatedProducts};
   }
     
-    
   default: 
     return state;
   }

@@ -1,13 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Typography, AppBar, Toolbar } from '@mui/material'
+import { Box, AppBar, Toolbar, MenuItem } from '@mui/material'
+import { Link } from 'react-router-dom';
 
 const Header = ({ cartSize }) => {
   return (
     <AppBar elevation={8} data-testid="header">
       <Toolbar>
-        <Typography component="div" sx={{ flexGrow: 1 }} variant="h5" component="div" m={2} sx={{ flexGrow: 1 }}>Virtual Storefront</Typography>
-        <Typography mr={2}>CART ({cartSize})</Typography>
+        <MenuItem 
+          component={Link} 
+          to={'/'}
+          sx={{ fontSize: '2rem' }} 
+          m={2}
+        >
+          Virtual Storefront
+        </MenuItem>
+        <Box sx={{ flexGrow: 1 }}></Box>
+        <MenuItem
+          mr={2} 
+          component={Link} 
+          to={`/cart`}
+          comp
+        >
+          CART ({cartSize})
+        </MenuItem>
       </Toolbar>
     </AppBar>
   );
