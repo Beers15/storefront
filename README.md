@@ -2,6 +2,8 @@
 
 This application is an online storefront that allows users to browse product offerings by category, place items in their shopping cart, and check-out when they are ready to make their purchase.
 
+* _Project does not actually process payment information; the check-out form display is for practice only._
+
 ## Requirements
 
 ### Phase 1 Application Setup

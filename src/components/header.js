@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Box, AppBar, Toolbar, MenuItem } from '@mui/material'
+import { Box, AppBar, Toolbar, MenuItem } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Header = ({ cartSize }) => {
