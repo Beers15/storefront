@@ -21,7 +21,7 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
           {product.description}
         </Typography>
         <Typography mt={2} variant="h6" color="text.secondary" data-testid={`product-cost-${product.name}`}>
-          Cost: {product.price.toFixed(2)}
+          Cost: {product.price}
         </Typography>
         <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.name}`}>
           Amount in Stock: {products.find(productFromStore => {

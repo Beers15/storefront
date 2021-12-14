@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectCategory } from '../../store/actions/categories';
+// import { selectCategory } from '../../store/actions/categories';
+import { selectACategory } from '../../store/reduxToolkitStore/actions/categories';
 import { Button, Stack, Typography, Box }  from '@mui/material';
 
 const Categories = (props) => {
@@ -22,8 +23,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  selectCategory: (category) => dispatch(selectCategory(category)),
-});
+const mapDispatchToProps = {
+  selectCategory: selectACategory,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

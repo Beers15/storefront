@@ -34,7 +34,7 @@ describe('Testing functionality of store cart', () => {
     });
   });
 
-  it.slip('Should properly reduce the count when the x button is hit for an item in the cart', async () => {
+  it.skip('Should properly reduce the count when the x button is hit for an item in the cart', async () => {
     //jest.spyOn(window.localStorage.__proto__, 'setItem');
 
     await waitFor(() => {

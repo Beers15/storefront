@@ -8,6 +8,9 @@ import Checkout from './components/cart/checkout';
 import Container from '@mui/material/Container';
 import { getCategories } from './store/actions/categories';
 import { getProducts } from './store/actions/products';
+//rtk
+// import { fetchCategories } from './store/reduxToolkitStore/actions/categories';
+// import { fetchProducts } from './store/reduxToolkitStore/actions/products';
 import {
   BrowserRouter,
   Route,
@@ -49,6 +52,12 @@ const App = (props) => {
 const mapDispatchToProps = dispatch => ({
   fetchCategories: () => dispatch(getCategories()),
   fetchProducts: () => dispatch(getProducts()),
-})
+});
+
+// //rtk
+// const mapDispatchToProps = {
+//   fetchCategories,
+//   fetchProducts,
+// }
 
 export default connect(null, mapDispatchToProps)(App);

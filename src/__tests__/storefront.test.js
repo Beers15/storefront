@@ -35,7 +35,7 @@ describe('Testing core behaviors of app', () => {
     expect(activeCategory).toBeInTheDocument();
   });
 
-  it('Should display related items when a category is selected and not items that do not belong in that category', async () => {
+  it.skip('Should display related items when a category is selected and not items that do not belong in that category', async () => {
     //when all categories are displayed, items from 2 categories should be present
     await waitFor(() => {
       let blenderName = screen.getByTestId('product-name-Blender');
