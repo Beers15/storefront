@@ -33,7 +33,6 @@ function cartReducer(state = initialState, action) {
     return { ...state, products:  updatedProducts}
   }
   case 'REMOVE_FROM_CART': {
-    console.log('REMOVE')
     let updatedProducts = state.products.filter(product => {
       if(product === action.payload && product.amount > 0) {
         --product.amount;
@@ -44,7 +43,6 @@ function cartReducer(state = initialState, action) {
     updateCartStorage(updatedProducts);
     return {...state, products: updatedProducts};
   }
-    
     
   default: 
     return state;

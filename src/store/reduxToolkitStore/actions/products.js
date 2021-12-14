@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { getProducts } from '../slices/products.slice';
 
-export const getProducts = () => async (dispatch) => {
+export const fetchProducts = () => async (dispatch) => {
   let res = null;
   try {
     res = await axios.get(`${process.env.REACT_APP_API_SERVER}/products`);
@@ -8,8 +9,5 @@ export const getProducts = () => async (dispatch) => {
     console.log(err);
   }
 
-  dispatch({
-    type: 'GET_PRODUCTS',
-    payload: res?.data?.results,
-  });
+  dispatch(getProducts(res?.data?.results));
 };

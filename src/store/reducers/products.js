@@ -7,7 +7,6 @@ function productsReducer(state = initialState, action) {
   
   switch(action.type) {
   case 'SELECT_CATEGORY':
-
     if(action.payload.id) {
       let filteredProducts = state.products.filter(product => product.categoryId === action.payload.id.toString());
       return { ...state, filteredProducts };
