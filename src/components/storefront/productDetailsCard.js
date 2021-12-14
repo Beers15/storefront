@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../store/actions/cart';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const ProductDetailsCard = ({ products, product, addToCart }) => {
   return (
@@ -36,7 +37,14 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
         >
           Add to Cart
         </Button>
-        <Button size="small" data-testid={`details-btn-${product.name}`}>View Details</Button>
+        <Button 
+          size="small" 
+          component={Link} 
+          to={`/products/${product.id}`}
+          data-testid={`details-btn-${product.name}`}
+        >
+          View Details
+        </Button>
       </CardActions>
     </Card>
   );
