@@ -32,11 +32,11 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
         <Button 
           size="small" 
           onClick={() => addToCart(product)} 
-          data-testid={`addToCart-btn-${product.productName}`}
+          data-testid={`addToCart-btn-${product.name}`}
         >
           Add to Cart
         </Button>
-        <Button size="small">View Details</Button>
+        <Button size="small" data-testid={`details-btn-${product.name}`}>View Details</Button>
       </CardActions>
     </Card>
   );

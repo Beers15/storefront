@@ -7,7 +7,7 @@ export const getProducts = () => async (dispatch) => {
   } catch(err) {
     console.log(err);
   }
-  console.log(res.data.results, '!')
+
   dispatch({
     type: 'GET_PRODUCTS',
     payload: res?.data?.results,

@@ -14,7 +14,7 @@ const Simplecart = (props) => {
               <Typography variant="subtitle1" pl={2} pr={2} data-testid={`cart-amount-${product.name}`}>
                 [{props.amounts[idx]}]
               </Typography>
-              <Typography variant="subtitle1" pl={2} pr={2} sx={{flexGrow: 1 }} data-testid={`cart-product-${product.productName}`}>
+              <Typography variant="subtitle1" pl={2} pr={2} sx={{flexGrow: 1 }} data-testid={`cart-product-${product.name}`}>
                 {product.name.length < 14 ? product.name : product.name.substring(0, 14) + '...'}
               </Typography>
               <CancelIcon 

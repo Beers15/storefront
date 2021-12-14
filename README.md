@@ -22,6 +22,12 @@ This application is an online storefront that allows users to browse product off
 
 * A user will be able to know that when they add items to their cart, an item is removed from the overall stock so that no other users can purchase it
 
+### Phase 4 Checkout and Details Pages
+
+* Users will be able to see a full detail view of a product so that they can make a more informed choice about 'purchasing' it
+
+* Users will be able to view their full cart and initiate the checkout process so that I can 'purchase' their selected products and have them 'delivered'
+
 ------------
 
 ### Deployment
