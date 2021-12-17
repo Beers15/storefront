@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { addToCart, removeFromCart } from '../slices/cart.slice';
+import {  addToCart, removeFromCart } from '../slices/cart.slice';
+import { fetchProducts } from './products';
 
-export const addProductToCart = async (product) => async (dispatch) => {
-  product.action = 'decrement';
-
+export const addProductToCart = product => async (dispatch) => {
+  let updatedProduct = Object.assign({}, product);
+  updatedProduct.action = 'decrement';
   let res = null;
   try {
-    await axios.put(`${process.env.REACT_APP_API_SERVER}/products`, product);
+    await axios.put(`${process.env.REACT_APP_API_SERVER}/products`, updatedProduct);
   } catch(err) {
     console.log(err);
   }
@@ -15,18 +16,19 @@ export const addProductToCart = async (product) => async (dispatch) => {
   if(res?.data?.inventoryCount < 1) {
     return;
   }
-
-  dispatch(addToCart(product));
+  dispatch(fetchProducts());
+  dispatch(addToCart(updatedProduct));
 };
 
 export const removeProductFromCart = product => async (dispatch) => {
-  product.action = 'increment';
+  let updatedProduct = Object.assign({}, product);
+  updatedProduct.action = 'increment';
 
   try {
-    await axios.put(`${process.env.REACT_APP_API_SERVER}/products`, product);
+    await axios.put(`${process.env.REACT_APP_API_SERVER}/products`, updatedProduct);
   } catch(err) {
     console.log(err);
   }
-
-  dispatch(removeFromCart(product));
+  dispatch(fetchProducts());
+  dispatch(removeFromCart(updatedProduct));
 };

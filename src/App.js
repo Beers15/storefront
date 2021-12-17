@@ -6,17 +6,15 @@ import Footer from './components/footer';
 import ProductPage from './components/ProductPage';
 import Checkout from './components/cart/checkout';
 import Container from '@mui/material/Container';
-import { getCategories } from './store/actions/categories';
-import { getProducts } from './store/actions/products';
-//rtk
-// import { fetchCategories } from './store/reduxToolkitStore/actions/categories';
-// import { fetchProducts } from './store/reduxToolkitStore/actions/products';
+// import { getCategories } from './store/actions/categories';
+// import { getProducts } from './store/actions/products';
+import { fetchCategories } from './store/reduxToolkitStore/actions/categories';
+import { fetchProducts } from './store/reduxToolkitStore/actions/products';
 import {
   BrowserRouter,
   Route,
   Routes as Switch,
 } from 'react-router-dom';
-
 
 const App = (props) => {
   useEffect(() => {
@@ -49,15 +47,15 @@ const App = (props) => {
   );
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchCategories: () => dispatch(getCategories()),
-  fetchProducts: () => dispatch(getProducts()),
-});
+// const mapDispatchToProps = dispatch => ({
+//   fetchCategories: () => dispatch(getCategories()),
+//   fetchProducts: () => dispatch(getProducts()),
+// });
 
 // //rtk
-// const mapDispatchToProps = {
-//   fetchCategories,
-//   fetchProducts,
-// }
+const mapDispatchToProps = {
+  fetchCategories,
+  fetchProducts,
+}
 
 export default connect(null, mapDispatchToProps)(App);
