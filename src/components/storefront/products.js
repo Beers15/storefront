@@ -23,8 +23,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  selectCategory: (category) => dispatch({type: 'SELECT_CATEGORY', payload: category}),
-});
+// const mapDispatchToProps = dispatch => ({
+//   selectCategory: (category) => dispatch({type: 'SELECT_CATEGORY', payload: category}),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(mapStateToProps)(Products);

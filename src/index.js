@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './store';
-//rtk
-//import store from './store/reduxToolkitStore';
+//import store from './store';
+import store from './store/reduxToolkitStore';
 import { Provider } from 'react-redux';
 
 import '@fontsource/roboto/300.css';
@@ -14,9 +13,8 @@ import '@fontsource/roboto/700.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store()}>
-      {/* rtk */}
-      {/* <Provider store={store}> */}
+    {/* <Provider store={store()}> */}
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,

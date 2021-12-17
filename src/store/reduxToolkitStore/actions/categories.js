@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { selectCategory, getCategories } from '../slices/categories.slice';
+import { selectCategory as applyCategoryToProducts } from '../slices/products.slice';
 
 export const selectACategory = category => async (dispatch) => {
   dispatch(selectCategory(category));
+  dispatch(applyCategoryToProducts(category));
 };
 
 export const fetchCategories = () => async (dispatch) => {

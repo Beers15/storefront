@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const getCartStorage = () => {
   let storage = localStorage.getItem('cart');
@@ -21,25 +21,24 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       let cartItem = action.payload;
-    
-      if(state.products.includes(cartItem)) {
-        let updatedProducts = state.products.map(product => {
-          if(product === cartItem) {
+      let updatedProducts = state.products;
+      if(current(state).products.map(product => product.name).includes(cartItem.name)) {
+        updatedProducts = state.products.map(product => {
+          if(product.name === cartItem.name) {
             ++product.amount;
           }
           return product;
         });
-        updateCartStorage(updatedProducts);
       } else {
         cartItem.amount = 1;
+        state.products.push(cartItem)
       }
-      let updatedProducts = [...state.products, cartItem];
+      
       updateCartStorage(updatedProducts);
-      state.products = updatedProducts;
     },
     removeFromCart(state, action) {
       let updatedProducts = state.products.filter(product => {
-        if(product === action.payload && product.amount > 0) {
+        if(product.name === action.payload.name && product.amount > 0) {
           --product.amount;
           return product.amount > 0;
         }

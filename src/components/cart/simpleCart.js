@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../../store/actions/cart';
+//import { removeFromCart } from '../../store/actions/cart';
+import { removeProductFromCart } from '../../store/reduxToolkitStore/actions/cart';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Paper, Typography, Box } from '@mui/material';
 
@@ -19,7 +20,7 @@ const Simplecart = (props) => {
               </Typography>
               <CancelIcon 
                 sx={{ color: 'crimson', marginRight: '10px' }} 
-                onClick={() => props.removeFromCart(product)}
+                onClick={() => props.removeProductFromCart(product)}
                 data-testid={`cart-product-removeBtn-${product.name}`}
               />
             </Box>
@@ -41,8 +42,12 @@ const mapStateToProps = state => {
   };
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeFromCart: (product) => dispatch(removeFromCart(product)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   removeFromCart: (product) => dispatch(removeFromCart(product)),
+// });
+
+const mapDispatchToProps = {
+  removeProductFromCart
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Simplecart);

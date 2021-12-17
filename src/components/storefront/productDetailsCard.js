@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../../store/actions/cart';
+//import { addToCart } from '../../store/actions/cart';
+import { addProductToCart } from '../../store/reduxToolkitStore/actions/cart';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ProductDetailsCard = ({ products, product, addToCart }) => {
+const ProductDetailsCard = ({ products, product, addProductToCart }) => {
   return (
     <Card sx={{ maxWidth: 345 }} data-testid={`product-${product.productName}`}>
       <CardMedia
@@ -24,15 +25,13 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
           Cost: {product.price}
         </Typography>
         <Typography variant="h6" color="text.secondary" data-testid={`product-count-${product.name}`}>
-          Amount in Stock: {products.find(productFromStore => {
-            return product === productFromStore
-          }).inventoryCount} 
+          Amount in Stock:  { products.find(productFromStore => product === productFromStore).inventoryCount }
         </Typography>
       </CardContent>
       <CardActions>
         <Button 
           size="small" 
-          onClick={() => addToCart(product)} 
+          onClick={() => addProductToCart(product)} 
           data-testid={`addToCart-btn-${product.name}`}
         >
           Add to Cart
@@ -52,13 +51,17 @@ const ProductDetailsCard = ({ products, product, addToCart }) => {
 
 const mapStateToProps = state => {
   return {
-    products: state.products.products,
+    products: state.products.filteredProducts
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  addToCart: (product) => dispatch(addToCart(product)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   addToCart: (product) => dispatch(addToCart(product)),
+// });
+
+const mapDispatchToProps = {
+  addProductToCart,
+}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetailsCard);

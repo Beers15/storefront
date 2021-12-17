@@ -10,6 +10,7 @@ const categoriesSlice = createSlice({
   },
   reducers: {
     selectCategory(state, action) {
+      console.log(action)
       if(action.payload.displayName === 'All') {
         state.currentCategory = initCategory;
       } 
